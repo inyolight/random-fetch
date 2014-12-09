@@ -1,0 +1,12 @@
+from lxml import html
+import requests
+
+page= requests.get("http://wordbook.naver.com/endic/wordbook/76570642")
+tree = html.fromstring(page.text)
+
+word = tree.xpath('//*[@id="frm"]/ul[1]/li[1]/div/a[1]/span')
+meaning = tree.xpath('//*[@id="frm"]/div[1]/ol/li/ul/li[1]/span[1]')
+
+print ('word', word)
+print ('meaning', meaning)
+
